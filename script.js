@@ -175,6 +175,15 @@ mm.add("(min-width: 769px)", () => {
             toggleActions: "play reverse play reverse",
         },
     });
+    gsap.from(".processBoxes .processBoxAnim", {
+        y: 100,
+        opacity: 0,
+        scrollTrigger: {
+            trigger: ".processBoxes .processBoxAnim",
+            start: "top 100%",
+            toggleActions: "play reverse play reverse",
+        },
+    });
 
     gsap.from(".technologiesHeadings h3", {
         y: 150,
