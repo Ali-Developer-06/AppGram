@@ -1,0 +1,86 @@
+:root {
+    --primary: #111;
+    --secondary: #fd0;
+}
+.select-box{
+    position: relative;
+    width: 300px;
+}
+.select-box input{
+    border: none;
+    outline: none;
+}
+.selected-option{
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    border-radius: .5rem;
+    border: 1px solid #ccc;
+}
+.selected-option .flagPlusCouNum{
+    position: relative;
+    display: flex;
+    text-align: center;
+    cursor: pointer;
+    padding: 0 5px ;
+    gap: 5px;
+}
+.select-box .options{
+    position: absolute;
+    top: 4rem;
+    width: 300px;
+    background-color: #fff;
+    border-radius: .5rem;
+    display: none;
+}
+.select-box .options.active{
+    display: block;
+}
+.select-box .options::before{
+    position: absolute;
+    content: "";
+    left: 1rem;
+    top: -1.2rem;
+    width: 0;
+    height: 0;
+    border: .6rem solid transparent;
+    border-bottom-color: var(--primary);
+}
+input.search-box{
+    background-color: var(--primary);
+    color: #fff;
+    border-radius: .5rem .5rem 0 0;
+    padding: 1.4rem 1rem;
+}
+.select-box ol{
+    list-style: none;
+    max-height: 23rem;
+    overflow: overlay;
+}
+.select-box ol::-webkit-scrollbar{
+    width: 0.6rem;
+}
+.select-box ol::-webkit-scrollbar-thumb{
+    width: 0.4rem;
+    height: 3rem;
+    background-color: #ccc;
+    border-radius: .4rem;
+}
+.select-box ol li{
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.select-box ol li.hide{
+    display: none;
+}
+.select-box ol li:not(:last-child){
+    border-bottom: .1rem solid #eee;
+}
+.select-box ol li:hover{
+    background-color: lightcyan;
+}
+.select-box ol li .country-name{
+    margin-left: .4rem;
+}
