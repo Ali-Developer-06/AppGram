@@ -9,6 +9,29 @@ window.addEventListener('scroll', function() {
     }
 });
 
+//*  <!-- ====== Pop Up script ====== -->
+
+document.addEventListener("DOMContentLoaded", function() {
+    var openCostCalculator = document.getElementById("openCostCalculator");
+    var costCalculatorPopup = document.getElementById("costCalculatorPopup");
+    var closeCostCalculatorPopup = document.getElementById("closeCostCalculatorPopup");
+
+    openCostCalculator.addEventListener("click", function(event) {
+        event.preventDefault();
+        costCalculatorPopup.style.display = "flex";
+    });
+
+    closeCostCalculatorPopup.addEventListener("click", function() {
+        costCalculatorPopup.style.display = "none";
+    });
+
+    window.addEventListener("click", function(event) {
+        if (event.target == costCalculatorPopup) {
+            costCalculatorPopup.style.display = "none";
+        }
+    });
+});
+
 //*  <!-- ====== Success script ====== -->
 
 function runCarouselAnimation() {
