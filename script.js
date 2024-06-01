@@ -44,42 +44,7 @@ window.addEventListener("resize", checkScreenSize);
 
 const mm = gsap.matchMedia();
 
-// Define the animations for screens larger than 768px
 
-mm.add("(max-width:768px)", () => {
-    gsap.from(".bannerSection", {
-        y: 100,
-        delay: 1,
-        duration: 1,
-        opacity: 0
-    });
-
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.refresh();
-    gsap.from(".about h1", {
-        y: 100,
-        delay: 1,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".about h1",
-            start: "top 80%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-    gsap.utils.toArray(".aboutBox").forEach((box, i) => {
-        gsap.from(box, {
-            y: 100,
-            opacity: 0,
-            scrollTrigger: {
-                trigger: box,
-                start: "top 100%",
-                toggleActions: "play reverse play reverse",
-            },
-        });
-    });
-})
-
-mm.add("(min-width: 769px)", () => {
     gsap.from(".bannerSection", {
         y: 200,
         delay: 1,
@@ -366,4 +331,3 @@ mm.add("(min-width: 769px)", () => {
             toggleActions: "play reverse play reverse",
         },
     });
-});
