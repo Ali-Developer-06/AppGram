@@ -42,26 +42,15 @@ window.addEventListener("resize", checkScreenSize);
 
 //*  <!-- ====== GSAP Animation ====== -->
 
+gsap.from(".bannerSection", {
+    y: 200,
+    delay: 1,
+    duration: 1,
+    opacity: 0
+});
+
 const mm = gsap.matchMedia();
-
-// Define the animations for screens larger than 768px
-
-mm.add("(max-width:768px)", () => {
-    gsap.from(".bannerSection", {
-        y: 100,
-        delay: 1,
-        duration: 1,
-        opacity: 0
-    });
-})
-
 mm.add("(min-width: 769px)", () => {
-    gsap.from(".bannerSection", {
-        y: 200,
-        delay: 1,
-        duration: 1,
-        opacity: 0
-    });
 
     gsap.from(".about h1", {
         y: 50,
