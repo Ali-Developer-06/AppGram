@@ -9,29 +9,6 @@ window.addEventListener('scroll', function() {
     }
 });
 
-//*  <!-- ====== Pop Up script ====== -->
-
-document.addEventListener("DOMContentLoaded", function() {
-    var openCostCalculator = document.getElementById("openCostCalculator");
-    var costCalculatorPopup = document.getElementById("costCalculatorPopup");
-    var closeCostCalculatorPopup = document.getElementById("closeCostCalculatorPopup");
-
-    openCostCalculator.addEventListener("click", function(event) {
-        event.preventDefault();
-        costCalculatorPopup.style.display = "flex";
-    });
-
-    closeCostCalculatorPopup.addEventListener("click", function() {
-        costCalculatorPopup.style.display = "none";
-    });
-
-    window.addEventListener("click", function(event) {
-        if (event.target == costCalculatorPopup) {
-            costCalculatorPopup.style.display = "none";
-        }
-    });
-});
-
 //*  <!-- ====== Success script ====== -->
 
 function runCarouselAnimation() {
@@ -189,20 +166,20 @@ mm.add("(min-width: 769px)", () => {
         },
     });
 
-    gsap.from(".processBoxes", {
+    gsap.from(".processBoxes1", {
         y: 100,
         opacity: 0,
         scrollTrigger: {
-            trigger: ".processBoxes",
+            trigger: ".processBoxes1",
             start: "top 100%",
             toggleActions: "play reverse play reverse",
         },
     });
-    gsap.from(".processBoxes .processBoxAnim", {
+    gsap.from(".processBoxes2 .processBoxAnim", {
         y: 100,
         opacity: 0,
         scrollTrigger: {
-            trigger: ".processBoxes .processBoxAnim",
+            trigger: ".processBoxes2 .processBoxAnim",
             start: "top 100%",
             toggleActions: "play reverse play reverse",
         },

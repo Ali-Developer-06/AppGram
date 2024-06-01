@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Calculator</title>
+    <style>
+        .question {
+            display: none;
+        }
+        .question.active {
+            display: block;
+        }
+        #result {
+            display: none;
+        }
+        .selected {
+            background-color: red;
+        }
+        .result-container {
+            display: flex;
+        }
+        .result-left {
+            width: 30%;
+        }
+        .result-right {
+            width: 70%;
+            padding-left: 20px;
+        }
+        .result-content {
+            display: none;
+        }
+        .result-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="costCalculator">
+        <div id="question1" class="question active">
+            <p>Question 1: What is your choice?</p>
+            <button id="q1a1" onclick="nextQuestion(1, 10, this)">Option 1</button>
+            <button id="q1a2" onclick="nextQuestion(1, 20, this)">Option 2</button>
+            <button id="q1a3" onclick="nextQuestion(1, 30, this)">Option 3</button>
+            <button id="q1a4" onclick="nextQuestion(1, 40, this)">Option 4</button>
+        </div>
+        
+        <div id="question2" class="question">
+            <p>Question 2: What is your choice?</p>
+            <button id="q2a1" onclick="nextQuestion(2, 10, this)">Option 1</button>
+            <button id="q2a2" onclick="nextQuestion(2, 20, this)">Option 2</button>
+            <button id="q2a3" onclick="nextQuestion(2, 30, this)">Option 3</button>
+            <button id="q2a4" onclick="nextQuestion(2, 40, this)">Option 4</button>
+            <button onclick="previousQuestion(1)">Previous</button>
+        </div>
+
+        <div id="question3" class="question">
+            <p>Question 3: What is your choice?</p>
+            <button id="q3a1" onclick="nextQuestion(3, 10, this)">Option 1</button>
+            <button id="q3a2" onclick="nextQuestion(3, 20, this)">Option 2</button>
+            <button id="q3a3" onclick="nextQuestion(3, 30, this)">Option 3</button>
+            <button id="q3a4" onclick="nextQuestion(3, 40, this)">Option 4</button>
+            <button onclick="previousQuestion(2)">Previous</button>
+        </div>
+
+        <div id="question4" class="question">
+            <p>Question 4: What is your choice?</p>
+            <button id="q4a1" onclick="nextQuestion(4, 10, this)">Option 1</button>
+            <button id="q4a2" onclick="nextQuestion(4, 20, this)">Option 2</button>
+            <button id="q4a3" onclick="nextQuestion(4, 30, this)">Option 3</button>
+            <button id="q4a4" onclick="nextQuestion(4, 40, this)">Option 4</button>
+            <button onclick="previousQuestion(3)">Previous</button>
+        </div>
+
+        <div id="question5" class="question">
+            <p>Question 5: What is your choice?</p>
+            <button id="q5a1" onclick="nextQuestion(5, 10, this)">Option 1</button>
+            <button id="q5a2" onclick="nextQuestion(5, 20, this)">Option 2</button>
+            <button id="q5a3" onclick="nextQuestion(5, 30, this)">Option 3</button>
+            <button id="q5a4" onclick="nextQuestion(5, 40, this)">Option 4</button>
+            <button onclick="previousQuestion(4)">Previous</button>
+        </div>
+
+        <div id="result">
+            <div class="result-container">
+                <div class="result-left">
+                    <button onclick="showContent('content1')">Content 1</button>
+                    <button onclick="showContent('content2')">Content 2</button>
+                    <button onclick="showContent('content3')">Content 3</button>
+                    <button onclick="showContent('content4')">Content 4</button>
+                </div>
+                <div class="result-right">
+                    <div id="content1" class="result-content">
+                        <p>This is the content for the first button.</p>
+                    </div>
+                    <div id="content2" class="result-content">
+                        <p>This is the content for the second button.</p>
+                    </div>
+                    <div id="content3" class="result-content">
+                        <p>This is the content for the third button.</p>
+                    </div>
+                    <div id="content4" class="result-content">
+                        <p>This is the content for the fourth button.</p>
+                    </div>
+                </div>
+            </div>
+            <p>Your total cost is: <span id="totalCost"></span></p>
+        </div>
+    </div>
+
+    <script>
+        let totalCost = 0;
+        let selectedOptions = {};
+
+        function nextQuestion(questionNumber, cost, element) {
+            // Remove 'selected' class from all buttons in current question
+            document.querySelectorAll(`#question${questionNumber} button`).forEach(btn => btn.classList.remove('selected'));
+            // Add 'selected' class to the clicked button
+            element.classList.add('selected');
+
+            // Update selected option
+            selectedOptions[`question${questionNumber}`] = {
+                cost: cost,
+                elementId: element.id
+            };
+
+            // Recalculate total cost
+            totalCost = Object.values(selectedOptions).reduce((sum, option) => sum + option.cost, 0);
+
+            // Hide current question and show next question or result
+            document.getElementById(`question${questionNumber}`).classList.remove('active');
+            if (questionNumber < 5) {
+                document.getElementById(`question${questionNumber + 1}`).classList.add('active');
+            } else {
+                document.getElementById('result').style.display = 'block';
+                document.getElementById('totalCost').innerText = totalCost;
+            }
+        }
+
+        function previousQuestion(questionNumber) {
+            // Hide current question and show previous question
+            document.getElementById(`question${questionNumber + 1}`).classList.remove('active');
+            document.getElementById(`question${questionNumber}`).classList.add('active');
+
+            // Highlight the previously selected option
+            let selectedOption = selectedOptions[`question${questionNumber}`];
+            if (selectedOption) {
+                document.getElementById(selectedOption.elementId).classList.add('selected');
+            }
+        }
+
+        function showContent(contentId) {
+            // Hide all content sections
+            document.querySelectorAll('.result-content').forEach(content => content.classList.remove('active'));
+            // Show the selected content section
+            document.getElementById(contentId).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
