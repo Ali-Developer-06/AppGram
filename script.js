@@ -54,148 +54,29 @@ mm.add("(max-width:768px)", () => {
         opacity: 0
     });
 
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.refresh();
     gsap.from(".about h1", {
-        y: 30,
+        y: 100,
+        delay: 1,
         opacity: 0,
         scrollTrigger: {
             trigger: ".about h1",
-            start: "top 100%",
+            start: "top 80%",
             toggleActions: "play reverse play reverse",
         },
     });
-
-    gsap.from(".aboutBox1", {
-        y: 10,
-        duration: 1,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".aboutBox1",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
+    gsap.utils.toArray(".aboutBox").forEach((box, i) => {
+        gsap.from(box, {
+            y: 100,
+            opacity: 0,
+            scrollTrigger: {
+                trigger: box,
+                start: "top 100%",
+                toggleActions: "play reverse play reverse",
+            },
+        });
     });
-    gsap.from(".aboutBox2", {
-        y: 10,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".aboutBox2",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-    gsap.from(".aboutBox3", {
-        y: 10,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".aboutBox3",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-    gsap.from(".aboutBox4", {
-        y: 10,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".aboutBox4",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-
-    gsap.from(".collaborateContent .collaborateContent1", {
-        y: 50,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".collaborateContent .collaborateContent1",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-
-    gsap.from(".collaborateContent .collaborateContent2", {
-        y: 50,
-        opacity: 0,
-        delay: 0.3,
-        scrollTrigger: {
-            trigger: ".collaborateContent .collaborateContent2",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-
-    gsap.from(".collaborateBox", {
-        y: 50,
-        opacity: 0,
-        delay: .5,
-        scrollTrigger: {
-            trigger: ".collaborateBox",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-
-    gsap.from(".servicesContent h1", {
-        y: 100,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".servicesContent h1",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-
-    gsap.from(".servicesContent p", {
-        y: 100,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".servicesContent p",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-
-    gsap.from(".serviceCard1", {
-        y: 100,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".serviceCard1",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-    gsap.from(".serviceCard2", {
-        y: 100,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".serviceCard2",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-    gsap.from(".serviceCard3", {
-        y: 100,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".serviceCard3",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-    gsap.from(".serviceCard4", {
-        y: 100,
-        opacity: 0,
-        scrollTrigger: {
-            trigger: ".serviceCard4",
-            start: "top 100%",
-            toggleActions: "play reverse play reverse",
-        },
-    });
-
-
-
-
-
-
 })
 
 mm.add("(min-width: 769px)", () => {
