@@ -531,6 +531,7 @@ body{
 .success{
     width: 100%;
     color: #fff;
+    overflow-x: hidden;
     text-align: center;
     height: max-content;
     background-color: #323232;
